@@ -1,0 +1,39 @@
+{
+    "manifestVersion": 1,
+    "id": "azd-extension-project-generator",
+    "publisher": "leansoft",
+    "version": "1.0.150",
+    "name": "项目生成器",
+    "description": "项目生成器",
+    "public": true,
+    "demands": ["api-version/3.0"],
+    "scopes": [ "vso.work_write","vso.project_manage",
+    "vso.identity","vso.code_write","vso.settings_write"],
+    "categories": [
+        "Azure Collection"
+    ],
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "project-generator",
+            "type": "ms.vss-web.hub",
+            "targets": [
+                "ms.vss-web.collection-admin-hub-group"
+            ],
+            "properties": {
+                "name": "项目生成器",
+                "uri": "dist/index.html"
+            }
+        }
+    ],
+    "files": [
+        {
+            "path": "dist",
+            "addressable": true
+        }
+    ]
+}

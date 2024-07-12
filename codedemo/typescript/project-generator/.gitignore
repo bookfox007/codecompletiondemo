@@ -1,0 +1,8 @@
+#忽略 node_modules
+/node_modules
+
+#忽略 dist 目录
+/dist
+
+#忽略 .visx 文件
+*.vsix

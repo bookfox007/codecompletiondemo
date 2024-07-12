@@ -1,0 +1,20 @@
+CC = gcc
+CFLAGS = -Wall
+TARGET = student_management_system
+
+all: $(TARGET)
+
+$(TARGET): main.o student.o utils.o
+	$(CC) $(CFLAGS) -o $(TARGET) main.o student.o utils.o
+
+main.o: main.c student.h utils.h
+	$(CC) $(CFLAGS) -c main.c
+
+student.o: student.c student.h utils.h
+	$(CC) $(CFLAGS) -c student.c
+
+utils.o: utils.c utils.h
+	$(CC) $(CFLAGS) -c utils.c
+
+clean:
+	rm -f *.o $(TARGET)
