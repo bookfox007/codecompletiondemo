@@ -14,36 +14,6 @@ import { QueryExpand } from "azure-devops-extension-api/WorkItemTracking/WorkIte
 
 
 export let ProjectInitPaths: string[] = [
-    "1_立项及采购",
-    "2_项目实施",
-    "3_上线运维",
-    "1_立项及采购\\11_立项文档",
-    "1_立项及采购\\12_采购文件",
-    "1_立项及采购\\13_合同文档",
-    "2_项目实施\\21_进度管理",
-    "2_项目实施\\22_需求及设计",
-    "2_项目实施\\23_开发及实施",
-    "2_项目实施\\24_测试文档",
-    "2_项目实施\\25_变更管理",
-    "3_上线运维\\31_基础数据",
-    "3_上线运维\\32_用户手册",
-    "3_上线运维\\33_上线方案",
-    "3_上线运维\\34_运维手册",
-    "3_上线运维\\35_验收报告",
-    "2_项目实施\\21_进度管理\\211_启动阶段",
-    "2_项目实施\\21_进度管理\\212_项目周报",
-    "2_项目实施\\21_进度管理\\213_其他汇报文档",
-    "2_项目实施\\22_需求及设计\\221_需求文档",
-    "2_项目实施\\22_需求及设计\\222_开发设计",
-    "2_项目实施\\22_需求及设计\\223_数据设计",
-    "2_项目实施\\22_需求及设计\\224_备份方案",
-    "2_项目实施\\23_开发及实施\\231_代码评审记录",
-    "2_项目实施\\23_开发及实施\\232_实施方案",
-    "2_项目实施\\24_测试文档\\241_研发自测",
-    "2_项目实施\\24_测试文档\\242_技术测试",
-    "2_项目实施\\24_测试文档\\243_业务测试",
-    "2_项目实施\\24_测试文档\\244_性能测试",
-    "2_项目实施\\24_测试文档\\245_安全测试"
 ];
 
 export const createProject = async (project: string): Promise<OperationReference> => {
@@ -52,7 +22,7 @@ export const createProject = async (project: string): Promise<OperationReference
     let client = api.getClient(CoreRestClient);
 
     processArr = await client.getProcesses();
-    //todo 发布到客户环境时这里应改成
+ 
     // let process = processArr.find((process) => process.name === "CNPSEC-PROCESS");
     let process = processArr.find((process) => process.name === "SCRUM");
     console.log(process);
@@ -162,7 +132,7 @@ export const createTfvcDirectory = async (projectId: string, count: number) => {
 
 
 export const settingProjectDefaultColumns = async (projectId: string) => {
-    //todo 确认实际开始时间和实际结束时间两个列在模板中的id
+ 
     let url = "http://localhost/DefaultCollection/_apis/Settings/Project/" + projectId + "/entries/me";
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + (await SDK.getAccessToken());
     axios.defaults.headers.common["Accept"] = "application/json;api-version=4.1-preview.1;excludeUrls=true;enumsAsNumbers=true;msDateFormat=true;noArrayWrap=true";
@@ -221,8 +191,7 @@ export const settingProjectDefaultColumns = async (projectId: string) => {
 
 
 export const settingBackLogVisibilities = async (projectName: string) => {
-
-    //todo 确认是不是每个模板都是一样的
+ 
     let coreClient = api.getClient(CoreRestClient);
     let client = api.getClient(WorkRestClient);
     let project = await coreClient.getProject(projectName);
@@ -232,7 +201,7 @@ export const settingBackLogVisibilities = async (projectName: string) => {
     } as unknown as TeamContext
     var settings = await client.getTeamSettings(teamCxt);
     console.log(settings);
-    // 遍历 settings.backlogVisibilities 对象的所有key，并将value修改为true
+    
     for (var key in settings.backlogVisibilities) {
         settings.backlogVisibilities[key] = true;
     }
@@ -249,7 +218,6 @@ export const settingBackLogVisibilities = async (projectName: string) => {
 }
 
 export const updateBoardColumns = async (projectName: string) => {
-    //todo 根据初始化的模板，查找初始化的board有多少种配置，然后根据每种配置获取对应的boards配置，对配置进行修改，修改为客户需要的配置
     let client = api.getClient(WorkRestClient);
     let coreClient = api.getClient(CoreRestClient);
     let project = await coreClient.getProject(projectName);
@@ -470,7 +438,7 @@ export const getProcesses = async () => {
 
 export const getProcessConfiguration = async () => {
     let client = api.getClient(WorkRestClient);
-    let processConfiguration = await client.getProcessConfiguration("CNPSEC-PROCESS");
+    let processConfiguration = await client.getProcessConfiguration("EXAMPLE");
     console.log(processConfiguration);
     
     
@@ -482,7 +450,7 @@ export const testDataProvider = async () => {
      
 }
 
-//创建一个Epic工作项，工作项的标题、指派人、描述信息由外部传入
+
 export const createEpic = async (title: string, assignedTo: string, description: string) => {
     let client = api.getClient(WorkItemTrackingRestClient);
     let workItem = {
@@ -496,7 +464,7 @@ export const createEpic = async (title: string, assignedTo: string, description:
     } as unknown as WorkItem;
     let project = await client.getProjects();
     let projectGuid = project[0].id;
-    let workItemResult = await client.createWorkItem(workItem, projectGuid, "CNPSEC-PROCESS");
+    let workItemResult = await client.createWorkItem(workItem, projectGuid, "EXAMPLE");
 
     console.log(workItemResult);
     
