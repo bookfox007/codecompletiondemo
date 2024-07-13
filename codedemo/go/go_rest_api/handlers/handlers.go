@@ -53,5 +53,14 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(user)
 }
 
+func CreateRole(w http.ResponseWriter, r *http.Request) {
+    var role models.Role
+    json.NewDecoder(r.Body).Decode(&role)
+    database.DB.Create(&role)
+    json.NewEncoder(w).Encode(role)
+}
+
+func UpdateRole
+
 
 
