@@ -11,7 +11,7 @@ import { OperationReference, OperationStatus } from "azure-devops-extension-api/
 
 import { v4 as uuidv4 } from "uuid";
 import { QueryExpand } from "azure-devops-extension-api/WorkItemTracking/WorkItemTracking";
-
+import {Config} from "../data/Config"
 
 export let ProjectInitPaths: string[] = [
 ];
@@ -133,7 +133,9 @@ export const createTfvcDirectory = async (projectId: string, count: number) => {
 
 export const settingProjectDefaultColumns = async (projectId: string) => {
  
-    let url = "http://localhost/DefaultCollection/_apis/Settings/Project/" + projectId + "/entries/me";
+    let url = Config.API_BaseURL + "/_apis/work/teamsettings/TeamSettings?api-version=4.1-preview.1";
+    
+    
     axios.defaults.headers.common['Authorization'] = 'Bearer ' + (await SDK.getAccessToken());
     axios.defaults.headers.common["Accept"] = "application/json;api-version=4.1-preview.1;excludeUrls=true;enumsAsNumbers=true;msDateFormat=true;noArrayWrap=true";
     axios.patch(url, {

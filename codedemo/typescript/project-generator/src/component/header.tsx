@@ -7,8 +7,13 @@ export default function Header() {
     
     const user: IUserContext = azdev.getUser();
     return (
-        <header>
-            <h1>{user.displayName}</h1>
-        </header>
+       <header className="header">
+              <div className="header-title">
+                <h1>团队项目创建工具</h1>
+              </div>
+              <div className="header-user">
+                <p>欢迎，{user.name}</p>
+              </div>
+       </header>
     );
 }

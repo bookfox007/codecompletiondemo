@@ -2,7 +2,6 @@ import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import Body from './component/Body';
 import * as SDK from 'azure-devops-extension-sdk';
-import Header from './component/header';
 
 const root = document.getElementById('root');
 
@@ -12,6 +11,7 @@ if (root !== null) {
         
         createRoot(root).render( 
 
+                
                 <Body /> 
         );
     });

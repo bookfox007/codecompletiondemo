@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { ReactDOM } from 'react';
-import { createProject, createTfvcDirectory, settingBackLogVisibilities, settingProjectDefaultColumns, updateBoardColumns, updateBoardSwamLanes, testDataProvider, getProcesses,getProcessConfiguration } from '../common/APIHelper'
+import { createProject, createTfvcDirectory, settingBackLogVisibilities, settingProjectDefaultColumns, updateBoardColumns, updateBoardSwamLanes, testDataProvider, getProcesses,getProcessConfiguration, createEpic } from '../common/APIHelper'
 import * as api from 'azure-devops-extension-api';
 import { OperationReference, OperationStatus } from 'azure-devops-extension-api/Operations/Operations';
 import { OperationsRestClient } from 'azure-devops-extension-api/Operations';
@@ -80,6 +80,7 @@ export default function Body() {
               updateBoardColumns(projectName);
               //需求5：Update Board Rows
               updateBoardSwamLanes(projectName);
+             
 
               setProjectCreatedStatus(100);
 
@@ -92,9 +93,6 @@ export default function Body() {
       </Col>
       <Col span={8}></Col>
     </Row>
-    {/* <button onClick={testDataProvider}>测试</button>
-    <button onClick={getProcesses}>获取Processes</button>
-    <button onClick={getProcessConfiguration}>获取 积压工作项配置信息</button> */}
     <br />
 
   </div>);
