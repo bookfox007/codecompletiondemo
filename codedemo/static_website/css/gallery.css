@@ -1,0 +1,5 @@
+/* 图片在鼠标放上时自动放大 */
+.gallery img:hover {
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
