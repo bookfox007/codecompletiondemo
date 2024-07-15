@@ -12,10 +12,6 @@ function Counter() {
   const decrement = () => {
     setCount(count - 1);
   };
-  //重置方法
-  const reset = () => {
-    setCount(0);
-  };
 
 
 
@@ -26,7 +22,6 @@ function Counter() {
       <div className="buttons">
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
-        <button onClick={reset}>Reset</button>
       </div>
     </div>
   );

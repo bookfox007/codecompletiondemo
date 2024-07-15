@@ -25,20 +25,5 @@ export class BookManager {
     return false;
   }
 
-  addComment(bookId: number, userName:string,content:string,star:number): void {
-    const book = this.findBookById(bookId);
-    if (book) {
-      const comment = new Comment(
-        this.comments.length + 1,
-        bookId,
-        userName,
-        content,
-        star,
-        new Date()
-      );
-      this.comments.push(comment);
-    }
-  }
-
 
 }

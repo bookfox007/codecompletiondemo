@@ -20,7 +20,5 @@ void deleteStudent(StudentList *list);
 void findStudent(StudentList *list);
 void listStudents(StudentList *list);
 void freeStudentList(StudentList *list);
-void saveStudentList(StudentList *list);
-void loadStudentList(StudentList *list);
 
 #endif

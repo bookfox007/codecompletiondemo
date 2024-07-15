@@ -14,15 +14,4 @@ pub struct CreateUser {
     pub email: String,
 }
 
-#[derive(Deserialize)]
-pub struct UpdateUser {
-    pub name: String,
-    pub email: String,
-}   
-
-#[derive(Deserialize)]
-pub struct DeleteUser {
-    pub id: i32,
-}
-
                 

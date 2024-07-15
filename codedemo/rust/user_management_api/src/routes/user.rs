@@ -17,17 +17,6 @@ pub async fn user_routes(req: Request<Body>, pool: PgPool) -> Result<Response<Bo
         _ => Ok(Response::new(Body::from("Not Found"))),
 
       
-        (&hyper::Method::PUT, "/users") => {
-            let whole_body = hyper::body::to_bytes(req.into_body()).await?;
-            let update_user: UpdateUser = serde_json::from_slice(&whole_body)?;
-            update_user(&pool, update_user).await
-        }
-        (&hyper::Method::DELETE, "/users") => {
-            let whole_body = hyper::body::to_bytes(req.into_body()).await?;
-            let delete_user: DeleteUser = serde_json::from_slice(&whole_body)?;
-            delete_user(&pool, delete_user).await
-        }
-        _ => Ok(Response::new(Body::from("Not Found"))),
     
     }
 }

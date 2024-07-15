@@ -9,9 +9,3 @@ type User struct {
     Token    string `json:"token,omitempty" gorm:"-"`
 }
 
-//创建role对象
-type Role struct {
-    ID   uint   `json:"id" gorm:"primary_key"`
-    Name string `json:"name"`
-}
-
